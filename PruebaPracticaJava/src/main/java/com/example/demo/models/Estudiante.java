@@ -64,6 +64,8 @@ public class Estudiante {
 		this.email = email;
 	}
 
+	
+
 	public String getEstado() {
 		return estado;
 	}
@@ -88,9 +90,11 @@ public class Estudiante {
 		this.curso = curso;
 	}
 
+	
+
 	public Estudiante(Long estudianteId, String nombres, String apellidos, String email, String estado,
 			Date fechaNacimiento, Curso curso) {
-		
+		super();
 		this.estudianteId = estudianteId;
 		this.nombres = nombres;
 		this.apellidos = apellidos;

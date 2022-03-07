@@ -12,7 +12,7 @@ public class EstudianteDTO {
 	
 	private String email;
 	
-	private String estado;
+	private int estado;
 	
 	private Date fechaNacimiento;
 	
@@ -43,11 +43,11 @@ public class EstudianteDTO {
 		this.email = email;
 	}
 
-	public String getEstado() {
+	public int getEstado() {
 		return estado;
 	}
 
-	public void setEstado(String estado) {
+	public void setEstado(int estado) {
 		this.estado = estado;
 	}
 

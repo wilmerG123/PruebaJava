@@ -32,7 +32,7 @@ public class EstudianteServicesImplementation implements EstudianteServices {
 				throw new IllegalArgumentException("El correo Ya existe");
 			}
 			estudiante.setFechaNacimiento(estudiantedto.getFechaNacimiento());
-			estudiante.setEstado(estudiantedto.getEstado());
+			estudiante.setEstado(validarEstado(estudiantedto.getEstado()));
 			Long idcurso = estudiantedto.getCurso().getId();
 			if(!validarCursoXid(estudiantedto.getCurso().getId())) {
 				throw new IllegalArgumentException("Curso con el ID " + idcurso + " no existe");
@@ -69,7 +69,7 @@ public class EstudianteServicesImplementation implements EstudianteServices {
 
 		estudiante.get().setEmail(estudiantedto.getEmail());
 		estudiante.get().setFechaNacimiento(estudiantedto.getFechaNacimiento());
-		estudiante.get().setEstado(estudiantedto.getEstado());
+		estudiante.get().setEstado(validarEstado(estudiantedto.getEstado()));
 		estudiante.get().setCurso(estudiantedto.getCurso());
 
 		return estudianterepo.save(estudiante.get());
@@ -104,6 +104,19 @@ public class EstudianteServicesImplementation implements EstudianteServices {
 			return true;
 		}
 		return false;
+	}
+	public String validarEstado (int estado) {
+		String estadoSaliente = "";
+		
+		if(estado ==0) {
+			estadoSaliente = "INACTIVO";
+		}else if(estado==1){
+			estadoSaliente = "ACTIVO";
+		}else {
+			throw new IllegalArgumentException("El estado que tratas de ingresar no existe");
+		}
+		
+		return estadoSaliente;
 	}
 
 		
