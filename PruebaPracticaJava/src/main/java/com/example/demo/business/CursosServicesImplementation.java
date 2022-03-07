@@ -20,9 +20,8 @@ public class CursosServicesImplementation implements CursosServices{
 
 		Curso curso = new Curso();
 		curso.setNombre(cursodto.getNombre());
-		curso.setEstado(cursodto.getEstado());
+		curso.setEstado(validarEstado(cursodto.getEstado()));
 		// Guardado en BBDD
-		
 		return cursorepository.save(curso);
 	}
 
@@ -32,9 +31,8 @@ public class CursosServicesImplementation implements CursosServices{
 		Curso curso = new Curso();
 		curso.setId(id);
 		curso.setNombre(cursodto.getNombre());
-		curso.setEstado(cursodto.getEstado());
+		curso.setEstado(validarEstado(cursodto.getEstado()));
 		// Actualizado en BBDD
-		
 		return cursorepository.save(curso);
 	}
 
@@ -51,6 +49,19 @@ public class CursosServicesImplementation implements CursosServices{
 
 		cursorepository.deleteById(id);
 
+	}
+	public String validarEstado (int estado) {
+		String estadoSaliente = "";
+		
+		if(estado ==0) {
+			estadoSaliente = "INACTIVO";
+		}else if(estado==1){
+			estadoSaliente = "ACTIVO";
+		}else {
+			throw new IllegalArgumentException("El estado que tratas de ingresar no existe");
+		}
+		
+		return estadoSaliente;
 	}
 
 	

@@ -4,7 +4,7 @@ public class CursoDTO {
 
 	private String nombre;
 	
-	private String estado;
+	private int estado;
 
 	public String getNombre() {
 		return nombre;
@@ -14,14 +14,12 @@ public class CursoDTO {
 		this.nombre = nombre;
 	}
 
-	public String getEstado() {
+	public int getEstado() {
 		return estado;
 	}
 
-	public void setEstado(String estado) {
+	public void setEstado(int estado) {
 		this.estado = estado;
 	}
-	
-	
 
 }
